@@ -15,12 +15,12 @@ function App() {
           </p>
         </div>
         <div className="grid grid-cols-3 grid-rows-2 mb-20 justify-evenly justify-items-center content-evenly items-center gap-10">
-          <Tank />
-          <Tank />
-          <Tank />
-          <Tank />
-          <Tank />
-          <Tank />
+          <Tank arrow="up" />
+          <Tank arrow="up" />
+          <Tank arrow="up" />
+          <Tank arrow="down" />
+          <Tank arrow="down" />
+          <Tank arrow="down" />
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TankImg from "../assets/tank.png";
 import TankExperience from "./TankExperience";
 
-const Tank = () => {
+const Tank = ({ arrow }) => {
   const [details, setDetails] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ const Tank = () => {
     >
       <img src={TankImg} alt="Tank" />
       <h1 className="text-[#bbbbbd] text-xl">T-34</h1>
-      {details && <TankExperience />}
+      {details && <TankExperience arrow={arrow} />}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Star from "../assets/star.png";
 
 const TankExperience = ({ arrow }) => {
@@ -29,9 +29,23 @@ const TankExperience = ({ arrow }) => {
   useEffect(() => {
     handleExperience();
   });
+
+  //Get div's coordinates, width and height
+  const inputRef = useRef();
+  const [experienceDiv, setExperienceDiv] = useState({});
+  useEffect(() => {
+    setExperienceDiv(inputRef.current.getBoundingClientRect());
+  }, []);
+  // console.log(experienceDiv);
+
+  const upArrowDiv = `absolute top-[255px] flex justify-center`;
+  const downArrowDiv = `absolute top-[-255px] flex justify-center`;
+  const upArrow = `absolute w-[40px] h-[40px] ml-[-20px] rotate-45 z-20 bg-[rgba(28,28,30)] border-2 border-[#2d2d2d] left-1/2 border-b-0 border-r-0`;
+  const downArrow = `absolute w-[40px] h-[40px] ml-[-20px] top-[214px] rotate-45 z-20 bg-[rgba(28,28,30)] border-2 border-[#2d2d2d] left-1/2 border-t-0 border-l-0`;
+
   return (
-    <div className="absolute top-[255px] flex justify-center">
-      <div className="absolute w-[40px] h-[40px] ml-[-20px] rotate-45 z-20 bg-[rgba(28,28,30)] border-2 border-[#2d2d2d] left-1/2 border-b-0 border-r-0"></div>
+    <div className={arrow === "up" ? upArrowDiv : downArrowDiv} ref={inputRef}>
+      <div className={arrow === "up" ? upArrow : downArrow}></div>
       <div className="relative top-5 flex flex-col justify-between z-10 bg-[rgba(28,28,30,0.75)] p-4 border-2 border-[#2d2d2d]">
         <div className="flex justify-between">
           <div>
