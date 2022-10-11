@@ -1,73 +1,60 @@
-import React, { useState } from "react";
 import styled from "styled-components";
 import SliderThumb from "../assets/slider-thumb.png";
-import Slider2 from "./Slider2";
 
-const Slider = () => {
-  const [value, setValue] = useState(0);
-  const MAX = 100;
-  const getBackgroundSize = () => {
-    return {
-      backgroundSize: `${(value * 100) / MAX}% 100%`,
-    };
-  };
-  const getTranslateX = () => {
-    return {
-      transform: `translateX(${(value * 100) / MAX - 50}%)`,
-    };
-  };
+const Slider = styled.input.attrs({ type: "range" })`
+  -webkit-appearance: none;
+  height: 10px;
+  width: 100%;
+  background: #1c1c1d;
+  border-radius: 5px;
+  background-image: linear-gradient(#ffc700, #ffc700);
+  background-repeat: no-repeat;
+  border: 3px solid #2a2a2d;
+  z-index: 20;
 
-  return (
-    <div className="relative mb-20 bg-[#383838] p-4 rounded w-[400px] flex flex-col z-10">
-      <datalist id="range_list2">
-        <option>1</option>
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    transform: ${(props) =>
+      `translateX(${(props.value * 100) / props.max - 50}%)`};
+    background: ${(props) =>
+      `linear-gradient(to right, #ff9800 0%, #ff9800 ${props.value}%, #fff ${props.value}%, #fff 100%);`};
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    background-image: url(${SliderThumb});
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
 
-        <option>2</option>
-
-        <option>3</option>
-
-        <option>4</option>
-
-        <option>5</option>
-
-        <option>6</option>
-
-        <option>7</option>
-      </datalist>
-      {/* <input
-        type="range"
-        min="0"
-        max={MAX}
-        onChange={(e) => setValue(e.target.value)}
-        style={getBackgroundSize()}
-        value={value}
-        className="slider"
-        // list="range_list"
-      /> */}
-      <Slider2
-        min="0"
-        max={MAX}
-        onChange={(e) => setValue(e.target.value)}
-        style={getBackgroundSize()}
-        value={value}
-      />
-      <datalist id="range_list">
-        <option>1</option>
-
-        <option>2</option>
-
-        <option>3</option>
-
-        <option>4</option>
-
-        <option>5</option>
-
-        <option>6</option>
-
-        <option>7</option>
-      </datalist>
-    </div>
-  );
-};
+  &::-moz-range-thumb {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    transform: ${(props) =>
+      `translateX(${(props.value * 100) / props.max - 50}%)`};
+    background: ${(props) =>
+      `linear-gradient(to right, #ff9800 0%, #ff9800 ${props.value}%, #fff ${props.value}%, #fff 100%);`};
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+    background-image: url(${SliderThumb});
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  &::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+  &::-moz-range-track {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
+`;
 
 export default Slider;
