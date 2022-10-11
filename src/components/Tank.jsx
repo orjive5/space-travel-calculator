@@ -7,7 +7,7 @@ const Tank = ({ arrow, pos, posMd }) => {
 
   return (
     <div
-      className="flex flex-col items-center relative max-w-[300px] mb-10 lg:mb-20"
+      className="flex flex-col items-center relative max-w-[300px] mb-20 lg:mb-20"
       onMouseEnter={() => setDetails(true)}
       onMouseLeave={() => setDetails(false)}
     >

@@ -3,10 +3,10 @@ import Tank from "./components/Tank";
 
 function App() {
   return (
-    <div className="min-h-screen p-10 w-full text-white md:bg-hero bg-no-repeat bg-top bg-[#1c1c1e] flex justify-center">
-      <div className="md:mt-[300px] w-[1000px] flex flex-col justify-center gap-10">
+    <div className="min-h-screen p-10 w-full text-white sm:bg-hero bg-no-repeat bg-top bg-[#1c1c1e] flex justify-center">
+      <div className="sm:mt-[300px] w-[1000px] flex flex-col justify-center gap-10">
         <div>
-          <h1 className="text-2xl md:text-4xl font-bold mb-5 md:mb-10">
+          <h1 className="text-2xl sm:text-4xl font-bold mb-5 sm:mb-10">
             Опыт танков
           </h1>
           <p>
@@ -16,7 +16,7 @@ function App() {
             tempora facere soluta aspernatur atque nisi.
           </p>
         </div>
-        <div className="grid md:mb-60 md:grid-cols-2 lg:grid-cols-3 lg:m-10 justify-evenly justify-items-center content-evenly items-center lg:gap-10">
+        <div className="grid mb-60 sm:grid-cols-2 lg:grid-cols-3 lg:m-10 justify-evenly justify-items-center content-evenly items-center lg:gap-10">
           <Tank arrow="up" pos="left" posMd="left" />
           <Tank arrow="up" pos="center" posMd="right" />
           <Tank arrow="up" pos="right" posMd="left" />
