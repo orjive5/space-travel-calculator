@@ -41,10 +41,10 @@ const TankExperience = ({ arrow, pos, posMd }) => {
     battle.length > 1 && battle[0] === "0" && setBattle(battle.slice(1));
   });
 
-  const upArrowDiv = `absolute top-[270px] w-screen sm:w-auto sm:top-[270px] z-10 pt-10 ${
+  const upArrowDiv = `absolute top-[270px] w-screen sm:w-auto sm:top-[270px] lg:top-[250px] z-10 pt-10 ${
     pos === "left" && "lg:left-0"
   } ${pos === "right" && "lg:right-0"}`;
-  const downArrowDiv = `absolute top-[290px] w-screen sm:w-auto lg:top-[-250px] sm:top-[270px] z-10 sm:pt-10 lg:pt-0 ${
+  const downArrowDiv = `absolute top-[270px] w-screen sm:w-auto lg:top-[-250px] sm:top-[270px] z-10 sm:pt-10 lg:pt-0 ${
     pos === "left" && "lg:left-0"
   } ${pos === "right" && "lg:right-0"}`;
 
@@ -53,7 +53,7 @@ const TankExperience = ({ arrow, pos, posMd }) => {
   } ${pos === "center" && "lg:left-1/2"} ${
     pos === "right" && "lg:right-[150px] lg:left-auto"
   } border-b-0 border-r-0 left-1/2`;
-  const downArrow = `absolute w-[40px] sm:top-5 h-[40px] ml-[-20px] lg:top-[206px] lg:rotate-45 rotate-[225deg] z-20 bg-[rgba(28,28,30)] border-2 border-[#2d2d2d] ${
+  const downArrow = `absolute w-[40px] top-5 h-[40px] ml-[-20px] lg:top-[206px] lg:rotate-45 rotate-[225deg] z-20 bg-[rgba(28,28,30)] border-2 border-[#2d2d2d] ${
     pos === "left" && "lg:left-[150px]"
   } ${pos === "center" && "lg:left-1/2"} ${
     pos === "right" && "lg:right-[150px] lg:left-auto"
@@ -69,7 +69,7 @@ const TankExperience = ({ arrow, pos, posMd }) => {
         className={`relative flex flex-col items-center sm:items-start gap-10 ${
           posMd === "left" ? "sm:left-32" : "sm:right-32"
         } lg:left-0 lg:right-0 ${
-          arrow === "down" && "lg:bottom-14 top-5"
+          arrow === "down" && "lg:bottom-14 top-10"
         } p-4 sm:top-auto justify-between bg-[rgba(28,28,30,0.75)] border-2 border-[#2d2d2d]`}
       >
         <div className="flex justify-between gap-10 text-center sm:text-left">
