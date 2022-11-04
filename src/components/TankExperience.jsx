@@ -41,7 +41,7 @@ const TankExperience = ({ arrow, pos, posMd }) => {
     battle.length > 1 && battle[0] === "0" && setBattle(battle.slice(1));
   });
 
-  const upArrowDiv = `absolute top-[320px] w-screen sm:w-auto sm:top-[320px] lg:top-[300px] z-10 pt-10 ${
+  const upArrowDiv = `absolute top-[320px] w-screen sm:w-auto sm:top-[320px] lg:top-[295px] z-10 pt-10 ${
     pos === "left" && "lg:left-0"
   } ${pos === "right" && "lg:right-0"}`;
   const downArrowDiv = `absolute top-[320px] w-screen sm:w-auto lg:top-[-250px] sm:top-[320px] z-10 sm:pt-10 lg:pt-0 ${
