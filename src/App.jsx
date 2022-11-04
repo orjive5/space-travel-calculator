@@ -10,10 +10,10 @@ function App() {
             Опыт танков
           </h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-            animi maxime in! Quaerat, dignissimos maxime. Necessitatibus
-            cupiditate commodi laborum voluptatem, fuga, delectus cum odio,
-            tempora facere soluta aspernatur atque nisi.
+            Loremmmm ipsum dolor sit amet consectetur adipisicing elit.
+            Blanditiis animi maxime in! Quaerat, dignissimos maxime.
+            Necessitatibus cupiditate commodi laborum voluptatem, fuga, delectus
+            cum odio, tempora facere soluta aspernatur atque nisi.
           </p>
         </div>
         <div className="grid mb-[450px] sm:mb-60 sm:grid-cols-2 lg:grid-cols-3 lg:m-10 justify-evenly justify-items-center content-evenly items-center lg:gap-10">
