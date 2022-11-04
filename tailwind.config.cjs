@@ -3,9 +3,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      backgroundImage: {
-        hero: "url('./assets/page_background.jpg')",
-      },
+      // backgroundImage: {
+      //   hero: "url('./assets/space_background.png')",
+      // },
     },
   },
   plugins: [require("@tailwindcss/forms")],

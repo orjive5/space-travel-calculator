@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import TankImg from "../assets/tank.png";
 import TankExperience from "./TankExperience";
 
-const Tank = ({ arrow, pos, posMd }) => {
+const Destination = ({ arrow, pos, posMd, imageSrc, destinationTitle }) => {
   const [details, setDetails] = useState(false);
 
   return (
@@ -11,11 +10,11 @@ const Tank = ({ arrow, pos, posMd }) => {
       onMouseEnter={() => setDetails(true)}
       onMouseLeave={() => setDetails(false)}
     >
-      <img src={TankImg} alt="Tank" />
-      <h1 className="text-[#bbbbbd] text-xl">T-34</h1>
+      <img src={imageSrc} alt="" className="p-5" />
+      <h1 className="text-[#bbbbbd] text-xl">{destinationTitle}</h1>
       {details && <TankExperience arrow={arrow} pos={pos} posMd={posMd} />}
     </div>
   );
 };
 
-export default Tank;
+export default Destination;
