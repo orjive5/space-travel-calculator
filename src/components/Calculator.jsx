@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import Star from "../assets/star.png";
 import Slider from "./Slider";
 
-const TankExperience = ({ arrow, pos, posMd }) => {
+const Calculator = ({
+  arrow,
+  pos,
+  posMd,
+  destinationDesc,
+  destinationDistance,
+}) => {
   const [equipment, setEquipment] = useState("Элитная");
   const [battle, setBattle] = useState(150);
   const [experience, setExperience] = useState(330);
@@ -44,7 +50,7 @@ const TankExperience = ({ arrow, pos, posMd }) => {
   const upArrowDiv = `absolute top-[320px] w-screen sm:w-auto sm:top-[320px] lg:top-[295px] z-10 pt-10 ${
     pos === "left" && "lg:left-0"
   } ${pos === "right" && "lg:right-0"}`;
-  const downArrowDiv = `absolute top-[320px] w-screen sm:w-auto lg:top-[-250px] sm:top-[320px] z-10 sm:pt-10 lg:pt-0 ${
+  const downArrowDiv = `absolute top-[320px] w-screen sm:w-auto lg:top-[-450px] sm:top-[320px] z-10 sm:pt-10 lg:pt-0 ${
     pos === "left" && "lg:left-0"
   } ${pos === "right" && "lg:right-0"}`;
 
@@ -53,7 +59,7 @@ const TankExperience = ({ arrow, pos, posMd }) => {
   } ${pos === "center" && "lg:left-1/2"} ${
     pos === "right" && "lg:right-[150px] lg:left-auto"
   } border-b-0 border-r-0 left-1/2`;
-  const downArrow = `absolute w-[40px] top-5 h-[40px] ml-[-20px] lg:top-[206px] lg:rotate-45 rotate-[225deg] z-20 bg-[rgba(28,28,30)] border-2 border-[#2d2d2d] ${
+  const downArrow = `absolute w-[40px] top-5 h-[40px] ml-[-20px] lg:top-[400px] lg:rotate-45 rotate-[225deg] z-20 bg-[rgba(28,28,30)] border-2 border-[#2d2d2d] ${
     pos === "left" && "lg:left-[150px]"
   } ${pos === "center" && "lg:left-1/2"} ${
     pos === "right" && "lg:right-[150px] lg:left-auto"
@@ -66,17 +72,24 @@ const TankExperience = ({ arrow, pos, posMd }) => {
     <div className={arrow === "up" ? upArrowDiv : downArrowDiv}>
       <div className={arrow === "up" ? upArrow : downArrow}></div>
       <div
-        className={`relative flex flex-col items-center sm:items-start gap-10 ${
+        className={`relative flex flex-col items-center sm:items-start ${
           posMd === "left" ? "sm:left-32" : "sm:right-32"
         } lg:left-0 lg:right-0 ${
-          arrow === "down" && "lg:bottom-14 top-10"
-        } p-4 sm:top-auto justify-between bg-[rgba(28,28,30,0.75)] border-2 border-[#2d2d2d]`}
+          arrow === "down" && "lg:bottom-[80px] top-10"
+        } px-4 py-8 sm:top-auto justify-between bg-[rgba(28,28,30,0.8)] border-2 border-[#2d2d2d] h-[500px]`}
       >
+        <div>
+          <p>{destinationDesc}</p>
+        </div>
+        <div>
+          <h1 className="text-[#a0986a] text-2xl font-bold mb-2">Distance</h1>
+          <p>{destinationDistance} light years</p>
+        </div>
         <div className="flex justify-between gap-10 text-center sm:text-left">
           <div>
             <div className="border-[#2d2d2d] sm:text-left border-b-2 pb-4 sm:border-0 sm:p-0">
               <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
-                Комплектация
+                Spaceship acceleration
               </h1>
               <div className="flex items-center justify-center gap-5 sm:block">
                 <div className="flex flex-col items-center sm:block">
@@ -89,7 +102,7 @@ const TankExperience = ({ arrow, pos, posMd }) => {
                     onChange={handleEquipment}
                     className={radioStyling}
                   />
-                  <label htmlFor="standard">Стандартная</label>
+                  <label htmlFor="standard">Low: 1G (9,81 m/s^2)</label>
                 </div>
                 <div className="flex flex-col items-center sm:block">
                   <input
@@ -101,7 +114,7 @@ const TankExperience = ({ arrow, pos, posMd }) => {
                     onChange={handleEquipment}
                     className={radioStyling}
                   />
-                  <label htmlFor="elite">Элитная</label>
+                  <label htmlFor="elite">Standard: 10 G (98 m/s^2)</label>
                 </div>
                 <div className="flex flex-col items-center sm:block">
                   <input
@@ -113,14 +126,16 @@ const TankExperience = ({ arrow, pos, posMd }) => {
                     onChange={handleEquipment}
                     className={radioStyling}
                   />
-                  <label htmlFor="premium">Премиумная</label>
+                  <label htmlFor="premium">
+                    Highest: 400 G (3922.66 m/s^2)
+                  </label>
                 </div>
               </div>
             </div>
           </div>
           <div className="hidden sm:flex flex-col items-center gap-2">
             <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
-              Опыт танка
+              Time passed
             </h1>
             <div className="flex items-center justify-between gap-7">
               <img src={Star} alt="star" width="70px" />
@@ -133,7 +148,7 @@ const TankExperience = ({ arrow, pos, posMd }) => {
         <div className="flex flex-col gap-5 items-center sm:flex-row sm:justify-between sm:gap-20 sm:items-end">
           <div>
             <h1 className="text-[#a0986a] text-2xl text-center sm:text-left font-bold mb-2">
-              Количество боёв
+              Maximum speed
             </h1>
             <div className="relative z-30 bg-[#383838] py-3 px-4 rounded w-[300px] flex flex-col">
               <datalist id="range_list2">
@@ -199,4 +214,4 @@ const TankExperience = ({ arrow, pos, posMd }) => {
   );
 };
 
-export default TankExperience;
+export default Calculator;

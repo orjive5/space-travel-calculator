@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import TankExperience from "./TankExperience";
+import Calculator from "./Calculator";
 
-const Destination = ({ arrow, pos, posMd, imageSrc, destinationTitle }) => {
+const Destination = ({
+  arrow,
+  pos,
+  posMd,
+  imageSrc,
+  destinationTitle,
+  destinationDesc,
+  destinationDistance,
+}) => {
   const [details, setDetails] = useState(false);
 
   return (
@@ -12,7 +20,15 @@ const Destination = ({ arrow, pos, posMd, imageSrc, destinationTitle }) => {
     >
       <img src={imageSrc} alt="" className="p-5" />
       <h1 className="text-[#bbbbbd] text-xl">{destinationTitle}</h1>
-      {details && <TankExperience arrow={arrow} pos={pos} posMd={posMd} />}
+      {details && (
+        <Calculator
+          arrow={arrow}
+          pos={pos}
+          posMd={posMd}
+          destinationDesc={destinationDesc}
+          destinationDistance={destinationDistance}
+        />
+      )}
     </div>
   );
 };

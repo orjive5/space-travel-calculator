@@ -25,13 +25,15 @@ function App() {
             travel) might be accessible to everyone!
           </p>
         </div>
-        <div className="grid mb-[450px] sm:mb-60 sm:grid-cols-2 lg:grid-cols-3 lg:m-10 justify-evenly justify-items-center content-evenly items-center lg:gap-10">
+        <div className="grid mb-[450px] sm:mb-100 sm:grid-cols-2 lg:grid-cols-3 lg:m-10 justify-evenly justify-items-center content-evenly items-center lg:gap-10">
           <Destination
             arrow="up"
             pos="left"
             posMd="left"
             imageSrc={ProximaCentauriB}
             destinationTitle="Proxima Centauri B"
+            destinationDesc="Proxima Centauri b is an exoplanet orbiting in the habitable zone of the red dwarf star Proxima Centauri, which is the closest star to the Sun and part of the triple star system Alpha Centauri. It is approximately 4.2 light years from Earth in the constellation Centaurus, making it the closest known exoplanets to the Solar System."
+            destinationDistance="4.22"
           />
           <Destination
             arrow="up"
@@ -40,6 +42,8 @@ function App() {
             imageSrc={Trappist1d}
             destinationTitle="
             TRAPPIST-1d"
+            destinationDesc="TRAPPIST-1d is a small exoplanet (about 30% the mass of the Earth), which orbits on the inner edge of the habitable zone of the ultracool dwarf star TRAPPIST-1 approximately 40 light-years away from Earth. TRAPPIST-1d is the least massive planet of the system and is likely to have a compact hydrogen-poor atmosphere similar to Venus, Earth, or Mars."
+            destinationDistance="40"
           />
           <Destination
             arrow="up"
@@ -47,6 +51,8 @@ function App() {
             posMd="left"
             imageSrc={Ross128b}
             destinationTitle="Ross 128 b"
+            destinationDesc="Ross 128 b is a confirmed Earth-sized exoplanet, likely rocky, orbiting within the inner habitable zone of the red dwarf Ross 128, at a distance of about 11 light-years from Earth. Ross 128 b is the nearest exoplanet around a quiet red dwarf, and is considered one of the best candidates for habitability."
+            destinationDistance="11.03"
           />
           <Destination
             arrow="down"
@@ -54,6 +60,8 @@ function App() {
             posMd="right"
             imageSrc={Kepler442b}
             destinationTitle="Kepler-442b"
+            destinationDesc="Kepler-442b is a confirmed near-Earth-sized exoplanet, likely rocky, orbiting within the habitable zone of the star Kepler-442, about 1,206 light-years from Earth. It is one of the more promising candidates for potential habitability, as its parent star is at least 40% less massive than the Sun – thus, it can have a lifespan of about 30 billion years or so."
+            destinationDistance="1291.6"
           />
           <Destination
             arrow="down"
@@ -61,6 +69,8 @@ function App() {
             posMd="left"
             imageSrc={MilkyWay}
             destinationTitle="Galactic Center of Milky Way"
+            destinationDesc="The Galactic Center is the rotational center of the Milky Way galaxy. Its central massive object is a supermassive black hole of about 4 million solar masses, which is called Sagittarius A*. The Galactic Center is approximately 26,000 light-years away from Earth in the direction of the constellations Sagittarius, Ophiuchus, and Scorpius, where the Milky Way appears brightest."
+            destinationDistance="27900"
           />
           <Destination
             arrow="down"
@@ -68,6 +78,8 @@ function App() {
             posMd="right"
             imageSrc={AndromedaGalaxy}
             destinationTitle="Andromeda Galaxy"
+            destinationDesc="The Andromeda Galaxy is a barred spiral galaxy with diameter of about 152,000 light-years approximately 2.5 million light-years from Earth and the nearest large galaxy to the Milky Way. The galaxy's name stems from the area of Earth's sky in which it appears, the constellation of Andromeda, which itself is named after the princess who was the wife of Perseus in Greek mythology."
+            destinationDistance="2520000"
           />
         </div>
       </div>
