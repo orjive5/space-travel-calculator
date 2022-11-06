@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import Star from "../assets/star.png";
+import React, { useState, useEffect } from "react";
 import Slider from "./Slider";
 
 const Calculator = ({
@@ -81,11 +80,11 @@ const Calculator = ({
         <div>
           <p>{destinationDesc}</p>
         </div>
-        <div>
-          <h1 className="text-[#a0986a] text-2xl font-bold mb-2">Distance</h1>
-          <p>{destinationDistance} light years</p>
-        </div>
-        <div className="flex justify-between gap-10 text-center sm:text-left">
+        <div className="w-full flex justify-between">
+          <div>
+            <h1 className="text-[#a0986a] text-2xl font-bold mb-2">Distance</h1>
+            <p>{destinationDistance} light years</p>
+          </div>
           <div>
             <div className="border-[#2d2d2d] sm:text-left border-b-2 pb-4 sm:border-0 sm:p-0">
               <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
@@ -126,86 +125,80 @@ const Calculator = ({
                     onChange={handleEquipment}
                     className={radioStyling}
                   />
-                  <label htmlFor="premium">
-                    Highest: 400 G (3922.66 m/s^2)
-                  </label>
+                  <label htmlFor="premium">High: 400 G (3922.66 m/s^2)</label>
                 </div>
               </div>
             </div>
           </div>
-          <div className="hidden sm:flex flex-col items-center gap-2">
+        </div>
+        <div>
+          <h1 className="text-[#a0986a] text-2xl text-center sm:text-left font-bold mb-2">
+            Maximum speed, % speed of light
+          </h1>
+          <div className="flex flex-col gap-5 items-center sm:flex-row sm:justify-between sm:gap-20 sm:items-end">
+            <div>
+              <div className="relative z-30 bg-[#383838] py-3 px-4 rounded w-[300px] flex flex-col">
+                <datalist id="range_list2">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </datalist>
+                <Slider
+                  min="0"
+                  max={MAX}
+                  onChange={(e) => setBattle(e.target.value)}
+                  style={getBackgroundSize()}
+                  value={battle}
+                />
+                <datalist id="range_list">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </datalist>
+              </div>
+            </div>
+            <input
+              className="form-input striped focus:border-yellow-500 focus:ring-0 rounded-lg p-2 border-4 active:ring-0 border-black text-[#a59d6e] text-right text-3xl pr-5 font-bold h-[55px] w-[120px]"
+              id="battle-input"
+              type="number"
+              min="0"
+              max="300"
+              maxLength={3}
+              placeholder={battle}
+              value={battle}
+              onChange={handleBattle}
+            />
+          </div>
+        </div>
+        <div className="w-full flex flex-col justify-between text-center sm:text-left">
+          <div className="hidden sm:flex justify-between items-center">
             <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
-              Time passed
+              Time passed in spaceship
             </h1>
             <div className="flex items-center justify-between gap-7">
-              <img src={Star} alt="star" width="70px" />
               <h2 className="text-4xl font-bold text-yellow-500">
-                {experience}
+                {experience} yrs
+              </h2>
+            </div>
+          </div>
+          <div className="hidden sm:flex justify-between items-center">
+            <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
+              Time passed on Earth
+            </h1>
+            <div className="flex items-center justify-between gap-7">
+              <h2 className="text-4xl font-bold text-yellow-500">
+                {experience} yrs
               </h2>
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-5 items-center sm:flex-row sm:justify-between sm:gap-20 sm:items-end">
-          <div>
-            <h1 className="text-[#a0986a] text-2xl text-center sm:text-left font-bold mb-2">
-              Maximum speed
-            </h1>
-            <div className="relative z-30 bg-[#383838] py-3 px-4 rounded w-[300px] flex flex-col">
-              <datalist id="range_list2">
-                <option>1</option>
-
-                <option>2</option>
-
-                <option>3</option>
-
-                <option>4</option>
-
-                <option>5</option>
-
-                <option>6</option>
-
-                <option>7</option>
-              </datalist>
-              <Slider
-                min="0"
-                max={MAX}
-                onChange={(e) => setBattle(e.target.value)}
-                style={getBackgroundSize()}
-                value={battle}
-              />
-              <datalist id="range_list">
-                <option>1</option>
-
-                <option>2</option>
-
-                <option>3</option>
-
-                <option>4</option>
-
-                <option>5</option>
-
-                <option>6</option>
-
-                <option>7</option>
-              </datalist>
-            </div>
-          </div>
-          <input
-            className="form-input striped focus:border-yellow-500 focus:ring-0 rounded-lg p-2 border-4 active:ring-0 border-black text-[#a59d6e] text-right text-3xl pr-5 font-bold h-[55px] w-[120px]"
-            id="battle-input"
-            type="number"
-            min="0"
-            max="300"
-            maxLength={3}
-            placeholder={battle}
-            value={battle}
-            onChange={handleBattle}
-          />
-        </div>
         <div className="sm:hidden flex flex-col gap-2">
           <h1 className="text-[#a0986a] text-2xl font-bold mb-2">Опыт танка</h1>
           <div className="flex items-center gap-7">
-            <img src={Star} alt="star" width="70px" />
             <h2 className="text-4xl font-bold text-yellow-500">{experience}</h2>
           </div>
         </div>
