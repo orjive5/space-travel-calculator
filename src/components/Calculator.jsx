@@ -7,44 +7,77 @@ const Calculator = ({
   posMd,
   destinationDesc,
   destinationDistance,
+  destinationDistanceKm,
 }) => {
-  const [equipment, setEquipment] = useState("Элитная");
-  const [battle, setBattle] = useState(150);
-  const [experience, setExperience] = useState(330);
-
+  const [acceleration, setAcceleration] = useState("Low");
+  const [maxSpeed, setMaxSpeed] = useState(10);
+  const [earthTime, setEarthTime] = useState(330);
+  const [spaceshipTime, setSpaceshipTime] = useState(0);
   //Slider
-  const MAX = 300;
+  const MAX = 100;
   const getBackgroundSize = () => {
     return {
-      backgroundSize: `${(battle * 100) / MAX}% 100%`,
+      backgroundSize: `${(maxSpeed * 100) / MAX}% 100%`,
     };
   };
 
-  const handleEquipment = (event) => setEquipment(event.target.value);
-  const handleBattle = (event) => {
-    event.target.value <= 300 &&
+  const handleAcceleration = (event) => setAcceleration(event.target.value);
+  const handleMaxSpeed = (event) => {
+    event.target.value <= 100 &&
       event.target.value >= 0 &&
-      setBattle(event.target.value);
-    event.target.value === "" && setBattle(0);
+      setMaxSpeed(event.target.value);
+    event.target.value === "" && setMaxSpeed(0);
   };
-  const handleExperience = () => {
-    switch (equipment) {
-      case "Стандартная":
-        setExperience(() => Math.round(battle * 3));
+  const handleTime = () => {
+    switch (acceleration) {
+      case "Low":
+        setEarthTime(() =>
+          Math.sqrt(
+            Math.pow(
+              Number(destinationDistanceKm) / ((maxSpeed / 100) * 300000),
+              2
+            ) +
+              Number(2n * destinationDistanceKm) / 0.00981
+          )
+        );
         break;
-      case "Элитная":
-        setExperience(() => Math.round(battle * 3 + battle * 3 * 0.1));
-        break;
-      case "Премиумная":
-        setExperience(() => Math.round(battle * 3 + battle * 3 * 0.2));
+      case "High":
+        setEarthTime(() =>
+          Math.sqrt(
+            Math.pow(
+              Number(destinationDistanceKm) / ((maxSpeed / 100) * 300000),
+              2
+            ) +
+              Number(2n * destinationDistanceKm) / 0.0981
+          )
+        );
         break;
     }
   };
 
   useEffect(() => {
-    handleExperience();
-    battle.length > 1 && battle[0] === "0" && setBattle(battle.slice(1));
+    handleTime();
+    maxSpeed.length > 1 &&
+      maxSpeed[0] === "0" &&
+      setMaxSpeed(maxSpeed.slice(1));
   });
+
+  useEffect(() => {
+    switch (acceleration) {
+      case "Low":
+        setSpaceshipTime(() => {
+          return (
+            (300000 / 0.00981) * Math.asinh((0.00981 * earthTime) / 300000)
+          );
+        });
+        break;
+      case "High":
+        setSpaceshipTime(() => {
+          return (300000 / 0.0981) * Math.asinh((0.0981 * earthTime) / 300000);
+        });
+        break;
+    }
+  }, [earthTime]);
 
   const upArrowDiv = `absolute top-[320px] w-screen sm:w-auto sm:top-[320px] lg:top-[295px] z-10 pt-10 ${
     pos === "left" && "lg:left-0"
@@ -94,38 +127,26 @@ const Calculator = ({
                 <div className="flex flex-col items-center sm:block">
                   <input
                     type="radio"
-                    id="standard"
-                    name="equipment"
-                    value="Стандартная"
-                    checked={equipment === "Стандартная"}
-                    onChange={handleEquipment}
+                    id="low"
+                    name="acceleration"
+                    value="Low"
+                    checked={acceleration === "Low"}
+                    onChange={handleAcceleration}
                     className={radioStyling}
                   />
-                  <label htmlFor="standard">Low: 1G (9,81 m/s^2)</label>
+                  <label htmlFor="low">Low: 1G (9,81 m/s^2)</label>
                 </div>
                 <div className="flex flex-col items-center sm:block">
                   <input
                     type="radio"
-                    id="elite"
-                    name="equipment"
-                    value="Элитная"
-                    checked={equipment === "Элитная"}
-                    onChange={handleEquipment}
+                    id="high"
+                    name="acceleration"
+                    value="High"
+                    checked={acceleration === "High"}
+                    onChange={handleAcceleration}
                     className={radioStyling}
                   />
-                  <label htmlFor="elite">Standard: 10 G (98 m/s^2)</label>
-                </div>
-                <div className="flex flex-col items-center sm:block">
-                  <input
-                    type="radio"
-                    id="premium"
-                    name="equipment"
-                    value="Премиумная"
-                    checked={equipment === "Премиумная"}
-                    onChange={handleEquipment}
-                    className={radioStyling}
-                  />
-                  <label htmlFor="premium">High: 400 G (3922.66 m/s^2)</label>
+                  <label htmlFor="high">High: 10 G (98 m/s^2)</label>
                 </div>
               </div>
             </div>
@@ -148,9 +169,9 @@ const Calculator = ({
                 <Slider
                   min="0"
                   max={MAX}
-                  onChange={(e) => setBattle(e.target.value)}
+                  onChange={(e) => setMaxSpeed(e.target.value)}
                   style={getBackgroundSize()}
-                  value={battle}
+                  value={maxSpeed}
                 />
                 <datalist id="range_list">
                   <option>1</option>
@@ -163,43 +184,57 @@ const Calculator = ({
             </div>
             <input
               className="form-input striped focus:border-yellow-500 focus:ring-0 rounded-lg p-2 border-4 active:ring-0 border-black text-[#a59d6e] text-right text-3xl pr-5 font-bold h-[55px] w-[120px]"
-              id="battle-input"
+              id="maxSpeed-input"
               type="number"
               min="0"
               max="300"
               maxLength={3}
-              placeholder={battle}
-              value={battle}
-              onChange={handleBattle}
+              placeholder={maxSpeed}
+              value={maxSpeed}
+              onChange={handleMaxSpeed}
             />
           </div>
         </div>
         <div className="w-full flex flex-col justify-between text-center sm:text-left">
           <div className="hidden sm:flex justify-between items-center">
             <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
-              Time passed in spaceship
+              Time passed on Earth
             </h1>
             <div className="flex items-center justify-between gap-7">
               <h2 className="text-4xl font-bold text-yellow-500">
-                {experience} yrs
+                {Math.round((earthTime / 31556952) * 100) / 100} yrs
               </h2>
             </div>
           </div>
           <div className="hidden sm:flex justify-between items-center">
             <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
-              Time passed on Earth
+              Time passed in spaceship
             </h1>
             <div className="flex items-center justify-between gap-7">
               <h2 className="text-4xl font-bold text-yellow-500">
-                {experience} yrs
+                {Math.round((spaceshipTime / 31556952) * 100) / 100} yrs
               </h2>
             </div>
           </div>
         </div>
         <div className="sm:hidden flex flex-col gap-2">
-          <h1 className="text-[#a0986a] text-2xl font-bold mb-2">Опыт танка</h1>
+          <div>
+            <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
+              Time passed on Earth
+            </h1>
+            <div className="flex items-center gap-7">
+              <h2 className="text-4xl font-bold text-yellow-500">
+                {Math.round((earthTime / 31556952) * 100) / 100} yrs
+              </h2>
+            </div>
+          </div>
+          <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
+            Time passed in spaceship
+          </h1>
           <div className="flex items-center gap-7">
-            <h2 className="text-4xl font-bold text-yellow-500">{experience}</h2>
+            <h2 className="text-4xl font-bold text-yellow-500">
+              {Math.round((spaceshipTime / 31556952) * 100) / 100} yrs
+            </h2>
           </div>
         </div>
       </div>

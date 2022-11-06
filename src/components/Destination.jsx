@@ -9,6 +9,7 @@ const Destination = ({
   destinationTitle,
   destinationDesc,
   destinationDistance,
+  destinationDistanceKm,
 }) => {
   const [details, setDetails] = useState(false);
 
@@ -27,6 +28,7 @@ const Destination = ({
           posMd={posMd}
           destinationDesc={destinationDesc}
           destinationDistance={destinationDistance}
+          destinationDistanceKm={destinationDistanceKm}
         />
       )}
     </div>
