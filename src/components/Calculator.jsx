@@ -63,17 +63,24 @@ const Calculator = ({
   });
 
   useEffect(() => {
+    let spaceshipSpeed = maxSpeed == 100 ? 0.995 : maxSpeed / 100;
     switch (acceleration) {
       case "Low":
         setSpaceshipTime(() => {
           return (
-            (300000 / 0.00981) * Math.asinh((0.00981 * earthTime) / 300000)
+            Math.sqrt(
+              1 - Math.pow(spaceshipSpeed * 300000, 2) / Math.pow(300000, 2)
+            ) * earthTime
           );
         });
         break;
       case "High":
         setSpaceshipTime(() => {
-          return (300000 / 0.0981) * Math.asinh((0.0981 * earthTime) / 300000);
+          return (
+            Math.sqrt(
+              1 - Math.pow(spaceshipSpeed * 300000, 2) / Math.pow(300000, 2)
+            ) * earthTime
+          );
         });
         break;
     }
@@ -202,7 +209,10 @@ const Calculator = ({
             </h1>
             <div className="flex items-center justify-between gap-7">
               <h2 className="text-4xl font-bold text-yellow-500">
-                {Math.round((earthTime / 31556952) * 100) / 100} yrs
+                {earthTime / 31556952 < 100
+                  ? Math.round((earthTime / 31556952) * 10) / 10
+                  : Math.round(earthTime / 31556952)}{" "}
+                yrs
               </h2>
             </div>
           </div>
@@ -212,7 +222,10 @@ const Calculator = ({
             </h1>
             <div className="flex items-center justify-between gap-7">
               <h2 className="text-4xl font-bold text-yellow-500">
-                {Math.round((spaceshipTime / 31556952) * 100) / 100} yrs
+                {spaceshipTime / 31556952 < 100
+                  ? Math.round((spaceshipTime / 31556952) * 10) / 10
+                  : Math.round(spaceshipTime / 31556952)}{" "}
+                yrs
               </h2>
             </div>
           </div>
@@ -224,7 +237,10 @@ const Calculator = ({
             </h1>
             <div className="flex items-center gap-7">
               <h2 className="text-4xl font-bold text-yellow-500">
-                {Math.round((earthTime / 31556952) * 100) / 100} yrs
+                {earthTime / 31556952 < 100
+                  ? Math.round((earthTime / 31556952) * 10) / 10
+                  : Math.round(earthTime / 31556952)}{" "}
+                yrs
               </h2>
             </div>
           </div>
@@ -233,7 +249,10 @@ const Calculator = ({
           </h1>
           <div className="flex items-center gap-7">
             <h2 className="text-4xl font-bold text-yellow-500">
-              {Math.round((spaceshipTime / 31556952) * 100) / 100} yrs
+              {spaceshipTime / 31556952 < 100
+                ? Math.round((spaceshipTime / 31556952) * 10) / 10
+                : Math.round(spaceshipTime / 31556952)}{" "}
+              yrs
             </h2>
           </div>
         </div>

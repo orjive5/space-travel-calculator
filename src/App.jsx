@@ -16,13 +16,17 @@ function App() {
             Space Travel Calculator
           </h1>
           <p>
-            Ever since the dawn of civilization, the idea of space travel has
-            fascinated humans! Haven't we all looked up into the night sky and
-            dreamed about space? While traveling deep into space is still
+            Humans have been captivated by the prospect of space travel ever
+            since the birth of civilisation! Haven't we all gazed up at the
+            night sky and dreamed about space? While deep space flight remains
             something out of science fiction movies like Star Trek and Star
-            Wars, the tremendous progress made by private space companies so far
-            seems very promising. Someday, space travel (or even interstellar
-            travel) might be accessible to everyone!
+            Wars, the significant progress achieved by commercial space
+            enterprises thus far appears very promising. Someday, space travel
+            (or even interstellar travel) might be accessible to everyone!
+          </p>
+          <p>
+            Below you can find the relativistic space travel calculations for
+            various destinations.
           </p>
         </div>
         <div className="grid mb-[450px] sm:mb-100 sm:grid-cols-2 lg:grid-cols-3 lg:m-10 justify-evenly justify-items-center content-evenly items-center lg:gap-10">
