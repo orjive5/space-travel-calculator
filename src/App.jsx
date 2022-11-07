@@ -29,7 +29,7 @@ function App() {
             various destinations.
           </p>
         </div>
-        <div className="grid mb-[450px] sm:mb-100 sm:grid-cols-2 lg:grid-cols-3 lg:m-10 justify-evenly justify-items-center content-evenly items-center lg:gap-10">
+        <div className="grid mb-[1000px] sm:mb-[500px] sm:grid-cols-2 lg:grid-cols-3 lg:m-10 justify-evenly justify-items-center content-evenly items-center lg:gap-10">
           <Destination
             arrow="up"
             pos="left"

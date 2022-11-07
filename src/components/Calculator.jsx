@@ -115,19 +115,21 @@ const Calculator = ({
           posMd === "left" ? "sm:left-32" : "sm:right-32"
         } lg:left-0 lg:right-0 ${
           arrow === "down" && "lg:bottom-[80px] top-10"
-        } px-4 py-8 sm:top-auto justify-between bg-[rgba(28,28,30,0.8)] border-2 border-[#2d2d2d] h-[500px]`}
+        } px-4 py-8 sm:top-auto justify-between bg-[rgba(28,28,30,0.85)] border-2 border-[#2d2d2d] sm:h-[500px]`}
       >
         <div>
           <p>{destinationDesc}</p>
         </div>
-        <div className="w-full flex justify-between">
-          <div>
-            <h1 className="text-[#a0986a] text-2xl font-bold mb-2">Distance</h1>
+        <div className="w-full flex flex-col items-center sm:items-start sm:flex-row gap-5 mt-5 sm:mt-0 justify-between">
+          <div className="text-center sm:text-left">
+            <h1 className="text-[#a0986a] text-xl sm:text-2xl font-bold mb-2">
+              Distance
+            </h1>
             <p>{destinationDistance} light years</p>
           </div>
           <div>
-            <div className="border-[#2d2d2d] sm:text-left border-b-2 pb-4 sm:border-0 sm:p-0">
-              <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
+            <div className="border-[#2d2d2d] text-center sm:text-left border-b-2 pb-4 sm:border-0 sm:p-0 mb-5 sm:mb-0">
+              <h1 className="text-[#a0986a] text-xl sm:text-2xl font-bold mb-2">
                 Spaceship acceleration
               </h1>
               <div className="flex items-center justify-center gap-5 sm:block">
@@ -159,11 +161,11 @@ const Calculator = ({
             </div>
           </div>
         </div>
-        <div>
-          <h1 className="text-[#a0986a] text-2xl text-center sm:text-left font-bold mb-2">
+        <div className="w-full mb-5 sm:mb-0">
+          <h1 className="text-[#a0986a] text-xl sm:text-2xl text-center sm:text-left font-bold mb-5 sm:mb-2">
             Maximum speed, % speed of light
           </h1>
-          <div className="flex flex-col gap-5 items-center sm:flex-row sm:justify-between sm:gap-20 sm:items-end">
+          <div className="flex flex-col gap-5 items-center sm:flex-row justify-between sm:gap-20 sm:items-end">
             <div>
               <div className="relative z-30 bg-[#383838] py-3 px-4 rounded w-[300px] flex flex-col">
                 <datalist id="range_list2">
@@ -190,7 +192,7 @@ const Calculator = ({
               </div>
             </div>
             <input
-              className="form-input striped focus:border-yellow-500 focus:ring-0 rounded-lg p-2 border-4 active:ring-0 border-black text-[#a59d6e] text-right text-3xl pr-5 font-bold h-[55px] w-[120px]"
+              className="form-input striped focus:border-yellow-500 focus:ring-0 rounded-lg p-2 border-4 active:ring-0 border-black text-[#a59d6e] text-right text-2xl sm:text-3xl pr-5 font-bold h-[55px] w-[120px]"
               id="maxSpeed-input"
               type="number"
               min="0"
@@ -208,7 +210,7 @@ const Calculator = ({
               Time passed on Earth
             </h1>
             <div className="flex items-center justify-between gap-7">
-              <h2 className="text-4xl font-bold text-yellow-500">
+              <h2 className="text-3xl font-bold text-yellow-500">
                 {earthTime / 31556952 < 100
                   ? Math.round((earthTime / 31556952) * 10) / 10
                   : Math.round(earthTime / 31556952)}{" "}
@@ -221,7 +223,7 @@ const Calculator = ({
               Time passed in spaceship
             </h1>
             <div className="flex items-center justify-between gap-7">
-              <h2 className="text-4xl font-bold text-yellow-500">
+              <h2 className="text-3xl font-bold text-yellow-500">
                 {spaceshipTime / 31556952 < 100
                   ? Math.round((spaceshipTime / 31556952) * 10) / 10
                   : Math.round(spaceshipTime / 31556952)}{" "}
@@ -230,13 +232,13 @@ const Calculator = ({
             </div>
           </div>
         </div>
-        <div className="sm:hidden flex flex-col gap-2">
-          <div>
-            <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
+        <div className="w-full sm:hidden flex flex-col gap-2">
+          <div className="flex justify-between items-center">
+            <h1 className="text-[#a0986a] text-xl font-bold mb-2">
               Time passed on Earth
             </h1>
             <div className="flex items-center gap-7">
-              <h2 className="text-4xl font-bold text-yellow-500">
+              <h2 className="text-3xl font-bold text-yellow-500">
                 {earthTime / 31556952 < 100
                   ? Math.round((earthTime / 31556952) * 10) / 10
                   : Math.round(earthTime / 31556952)}{" "}
@@ -244,16 +246,18 @@ const Calculator = ({
               </h2>
             </div>
           </div>
-          <h1 className="text-[#a0986a] text-2xl font-bold mb-2">
-            Time passed in spaceship
-          </h1>
-          <div className="flex items-center gap-7">
-            <h2 className="text-4xl font-bold text-yellow-500">
-              {spaceshipTime / 31556952 < 100
-                ? Math.round((spaceshipTime / 31556952) * 10) / 10
-                : Math.round(spaceshipTime / 31556952)}{" "}
-              yrs
-            </h2>
+          <div className="flex justify-between items-center">
+            <h1 className="text-[#a0986a] text-xl font-bold mb-2">
+              Time passed in spaceship
+            </h1>
+            <div className="flex items-center gap-7">
+              <h2 className="text-3xl font-bold text-yellow-500">
+                {spaceshipTime / 31556952 < 100
+                  ? Math.round((spaceshipTime / 31556952) * 10) / 10
+                  : Math.round(spaceshipTime / 31556952)}{" "}
+                yrs
+              </h2>
+            </div>
           </div>
         </div>
       </div>
