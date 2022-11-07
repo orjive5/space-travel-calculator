@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import SliderThumb from "../assets/slider-thumb.png";
+import styled from 'styled-components';
+import SliderThumb from '../assets/slider-thumb.png';
 
-const Slider = styled.input.attrs({ type: "range" })`
+const Slider = styled.input.attrs({ type: 'range' })`
   -webkit-appearance: none;
   height: 10px;
   width: 100%;
@@ -17,8 +17,7 @@ const Slider = styled.input.attrs({ type: "range" })`
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    transform: ${(props) =>
-      `translateX(${(props.value * 100) / props.max - 50}%)`};
+    transform: ${(props) => `translateX(${(props.value * 100) / props.max - 50}%)`};
     background: ${(props) =>
       `linear-gradient(to right, #ff9800 0%, #ff9800 ${props.value}%, #fff ${props.value}%, #fff 100%);`};
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
@@ -33,8 +32,7 @@ const Slider = styled.input.attrs({ type: "range" })`
     height: 35px;
     width: 35px;
     border-radius: 50%;
-    transform: ${(props) =>
-      `translateX(${(props.value * 100) / props.max - 50}%)`};
+    transform: ${(props) => `translateX(${(props.value * 100) / props.max - 50}%)`};
     background: ${(props) =>
       `linear-gradient(to right, #ff9800 0%, #ff9800 ${props.value}%, #fff ${props.value}%, #fff 100%);`};
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);

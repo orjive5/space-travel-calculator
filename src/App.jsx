@@ -1,32 +1,28 @@
-import React from "react";
-import Destination from "./components/Destination";
-import ProximaCentauriB from "./assets/destinations/proxima_centauri_b.png";
-import Trappist1d from "./assets/destinations/TRAPPIST-1d.png";
-import Ross128b from "./assets/destinations/ross_128_b.png";
-import Kepler442b from "./assets/destinations/kepler_442b.png";
-import MilkyWay from "./assets/destinations/milky_way.png";
-import AndromedaGalaxy from "./assets/destinations/andromeda_galaxy.png";
+import React from 'react';
+import Destination from './components/Destination';
+import ProximaCentauriB from './assets/destinations/proxima_centauri_b.png';
+import Trappist1d from './assets/destinations/TRAPPIST-1d.png';
+import Ross128b from './assets/destinations/ross_128_b.png';
+import Kepler442b from './assets/destinations/kepler_442b.png';
+import MilkyWay from './assets/destinations/milky_way.png';
+import AndromedaGalaxy from './assets/destinations/andromeda_galaxy.png';
 
 function App() {
   return (
     <div className="min-h-screen p-10 w-full text-white sm:bg-hero bg-no-repeat bg-top bg-[#1c1c1e] flex justify-center overflow-hidden">
       <div className="w-[1000px] flex flex-col justify-center gap-10">
         <div>
-          <h1 className="text-2xl sm:text-4xl font-bold mb-5 sm:mb-10">
-            Space Travel Calculator
-          </h1>
+          <h1 className="text-2xl sm:text-4xl font-bold mb-5 sm:mb-10">Space Travel Calculator</h1>
           <p>
-            Humans have been captivated by the prospect of space travel ever
-            since the birth of civilisation! Haven't we all gazed up at the
-            night sky and dreamed about space? While deep space flight remains
-            something out of science fiction movies like Star Trek and Star
-            Wars, the significant progress achieved by commercial space
-            enterprises thus far appears very promising. Someday, space travel
-            (or even interstellar travel) might be accessible to everyone!
+            Humans have been captivated by the prospect of space travel ever since the birth of
+            civilisation! Haven't we all gazed up at the night sky and dreamed about space? While
+            deep space flight remains something out of science fiction movies like Star Trek and
+            Star Wars, the significant progress achieved by commercial space enterprises thus far
+            appears very promising. Someday, space travel (or even interstellar travel) might be
+            accessible to everyone!
           </p>
           <p>
-            Below you can find the relativistic space travel calculations for
-            various destinations.
+            Below you can find the relativistic space travel calculations for various destinations.
           </p>
         </div>
         <div className="grid mb-[1000px] sm:mb-[500px] sm:grid-cols-2 lg:grid-cols-3 lg:m-10 justify-evenly justify-items-center content-evenly items-center lg:gap-10">
